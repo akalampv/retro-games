@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #011F3F;
+}
+
+.red {
+    background-color: red;
+    grid-area: red;
+}
+
+.yellow {
+    background-color: yellow;
+    grid-area: yellow;
+}
+
+.green {
+    background-color: green;
+    grid-area: green;
+}
+
+.blue {
+    background-color: blue;
+    grid-area: blue;
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+        "red yellow"
+        "green blue";
+    justify-content: center;
+    grid-gap: 2rem 2rem;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    border: 0.5rem solid black;
+    border-radius: 20%;
+    cursor: pointer;
+    padding: 0;
+}
+
+.box:focus {
+    outline: none;
+}
+
+.box-pressed {
+    box-shadow: 0 0 20px white;
+    background-color: grey;
+}
+
+.header {
+    text-align: center;
+    padding: 5rem;
+    font-size: 3rem;
+}
+
+.game-over {
+    background-color: red;
+    opacity: 0.8;
+}
