@@ -55,11 +55,30 @@ body {
 
 .header {
     text-align: center;
-    padding: 5rem;
     font-size: 3rem;
+    padding-top: 5rem;
 }
 
 .game-over {
     background-color: red;
     opacity: 0.8;
+}
+
+.start-button {
+    display: block;
+    margin: 5rem auto;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: #011F3F;
+    border: 2px solid black;
+}
+
+.start-button:hover {
+    opacity: 50%;
+    cursor: pointer;
+}
+
+.hidden {
+    visibility: hidden;
 }
