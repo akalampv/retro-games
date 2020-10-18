@@ -13,6 +13,9 @@ let started = false;
 /* HEADER ELEMENT */
 let header = document.querySelector(".header");
 
+/* START BUTTON */
+let startButton = document.querySelector(".start-button");
+
 /* LIST OF ALL BUTTONS */
 let buttons = document.querySelectorAll(".box");
 
@@ -37,20 +40,20 @@ function clickAnimation(index) {
 }
 
 /* START GAME */
-setTimeout(function () {
+startButton.addEventListener("click", function () {
     if (!started) {
         document.querySelector(".header").textContent = "Level " + level;
+        startButton.classList.add("hidden");
         started = true;
         nextSequence();
     }
-}, 1000);
-
+})
 
 /* PERFORM ROUND */
 function nextSequence() {
     userPattern = [];
     level++;
-    header.textContent = "Level " + level;
+    header.innerHTML = "Level " + level;
     let randomIndex = Math.floor(Math.random() * buttons.length);
     clickAnimation(randomIndex);
     gamePattern.push(buttons[randomIndex]);
@@ -78,7 +81,7 @@ function checkAnswer(index) {
         playSound("wrong");
         setTimeout(function () {
             document.querySelector("body").classList.toggle("game-over");
-            header.innerHTML = "Game Over!<br>Press any key to restart";
+            header.textContent = "Game Over!";
         }, 300);
         restart();
     }
@@ -90,4 +93,6 @@ function restart() {
     level = 0;
     gamePattern = [];
     userPattern = [];
+    startButton.classList.remove("hidden");
+    startButton.textContent = "RESTART";
 }
