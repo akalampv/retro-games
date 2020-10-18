@@ -37,13 +37,13 @@ function clickAnimation(index) {
 }
 
 /* START GAME */
-document.addEventListener("keydown", function () {
+setTimeout(function () {
     if (!started) {
         document.querySelector(".header").textContent = "Level " + level;
         started = true;
         nextSequence();
     }
-})
+}, 1000);
 
 
 /* PERFORM ROUND */
