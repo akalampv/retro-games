@@ -1,98 +1,90 @@
-/* LIST OF USER CLICKED BUTTONS */
+/*****************
+ *               *
+ *     NAVBAR    *
+ *               *
+ * * * * * * * * */
+
+let menu = document.querySelector(".menu");
+menu.addEventListener("click", function () {
+    document.querySelector("nav").classList.toggle("responsive");
+})
+
+
+/** * * * * * * * * * * * * *
+*                           *
+*            GAME           *
+*                           *
+* * * * * * * * * * * * * * */
+
 let userPattern = [];
-
-/* LIST OF CLICKED BUTTONS */
 let gamePattern = [];
-
-/* GAME LEVEL */
+let isStarted = false;
 let level = 0;
-
-/* IS GAME STARTED */
-let started = false;
-
-/* HEADER ELEMENT */
-let header = document.querySelector(".header");
-
-/* START BUTTON */
-let startButton = document.querySelector(".start-button");
-
-/* LIST OF ALL BUTTONS */
 let buttons = document.querySelectorAll(".box");
+let startBtn = document.querySelector(".start-btn");
+let header = document.querySelector(".level");
+let main = document.querySelector("main");
 
-/* FLASH BUTTON */
-function flash(index) {
+function btnAnimation(index) {
     buttons[index].classList.toggle("box-pressed");
     setTimeout(function () {
         buttons[index].classList.toggle("box-pressed");
     }, 100);
 }
 
-/* PLAY SOUND */
 function playSound(name) {
     let audio = new Audio("sounds/" + name + ".mp3");
     let x = audio.play();
 }
 
-/* CLICK ANIMATION */
-function clickAnimation(index) {
-    flash(index);
-    playSound(index);
-}
-
-/* START GAME */
-startButton.addEventListener("click", function () {
-    if (!started) {
-        document.querySelector(".header").textContent = "Level " + level;
-        startButton.classList.add("hidden");
-        started = true;
-        nextSequence();
+startBtn.addEventListener("click", function () {
+    if (!isStarted) {
+        startBtn.classList.add("hidden");
+        isStarted = true;
+        nextLevel();
     }
 })
 
-/* PERFORM ROUND */
-function nextSequence() {
-    userPattern = [];
+function nextLevel() {
     level++;
-    header.innerHTML = "Level " + level;
-    let randomIndex = Math.floor(Math.random() * buttons.length);
-    clickAnimation(randomIndex);
-    gamePattern.push(buttons[randomIndex]);
+    userPattern = [];
+    header.textContent = "Level " + level;
+    let randomNum = Math.floor(Math.random() * buttons.length);
+    btnAnimation(randomNum);
+    gamePattern.push(buttons[randomNum]);
 }
 
-/* PLAY */
 for (let i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener("click", function () {
-        clickAnimation(i);
+        btnAnimation(i);
         userPattern.push(buttons[i]);
         checkAnswer(userPattern.length - 1);
     })
 }
 
-/* CHECK FOR WIN */
 function checkAnswer(index) {
     if (userPattern[index] === gamePattern[index]) {
         if (userPattern.length === gamePattern.length) {
             setTimeout(function () {
-                nextSequence();
+                nextLevel();
             }, 1000);
         }
     } else {
-        document.querySelector("body").classList.toggle("game-over");
+        main.classList.toggle("game-over");
+        header.textContent = "Game Over!"
         playSound("wrong");
         setTimeout(function () {
-            document.querySelector("body").classList.toggle("game-over");
-            header.textContent = "Game Over!";
+            main.classList.toggle("game-over");
         }, 300);
         restart();
     }
 }
 
-/* RESTART GAME */
 function restart() {
-    started = false;
+    isStarted = false;
     level = 0;
     gamePattern = [];
     userPattern = [];
-    startButton.classList.remove("hidden");
-    startButton.textContent = "RESTART";
+    startBtn.classList.remove("hidden");
+    startBtn.textContent = "Restart";
 }
