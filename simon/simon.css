@@ -1,0 +1,86 @@
+/* MAIN */
+main {
+    text-align: center;
+    padding: 2rem 0;
+}
+.board {
+    display: grid;
+    grid-template-areas:
+        "red yellow"
+        "green blue";
+    justify-content: center;
+    grid-gap: 2rem 2rem;
+}
+
+.box {
+    width: 20vw;
+    height: 20vw;
+    max-width: 150px;
+    max-height: 150px;
+    border: 0.5rem solid black;
+    border-radius: 20%;
+    cursor: pointer;
+    padding: 0;
+}
+
+.box:focus {
+    outline: none;
+}
+
+.box-pressed {
+    box-shadow: 0 0 20px white;
+    background-color: grey;
+}
+
+.red {
+    background-color: red;
+    grid-area: red;
+}
+
+.yellow {
+    background-color: yellow;
+    grid-area: yellow;
+}
+
+.green {
+    background-color: green;
+    grid-area: green;
+}
+
+.blue {
+    background-color: blue;
+    grid-area: blue;
+}
+
+.level {
+    font-size: 1.3rem;
+}
+
+.header {
+    padding-bottom: 2rem;
+}
+
+.start-btn {
+    margin-top: 2rem;
+    height: 30px;
+    width: 80px;
+    border-radius: 10%;
+    background-color: var(--header-color);
+    color: var(--nav-color);
+    font-weight: bold;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 0.6rem;
+}
+
+.start-btn:focus {
+    outline: none;
+}
+
+.game-over {
+    background-color: var(--header-color);
+    opacity: 0.8;
+}
+
+.hidden {
+    visibility: hidden;
+}

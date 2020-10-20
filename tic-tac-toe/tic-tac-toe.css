@@ -1,0 +1,61 @@
+main {
+}
+
+.tictactoe-container {
+    width: 30%;
+    margin: 2rem auto;
+    display: grid;
+    grid-template-areas:
+        "ul um ur"
+        "ml mm mr"
+        "dl dm dr";
+    justify-content: center;
+    align-content: center;
+}
+
+[id="00"] {
+    grid-area: ul;
+}
+
+[id="01"] {
+    grid-area: um;
+}
+
+[id="02"] {
+    grid-area: ur;
+}
+
+[id="10"] {
+    grid-area: ml;
+}
+
+[id="11"] {
+    grid-area: mm;
+}
+
+[id="12"] {
+    grid-area: mr;
+}
+
+[id="20"] {
+    grid-area: dl;
+}
+
+[id="21"] {
+    grid-area: dm;
+}
+
+[id="22"] {
+    grid-area: dr;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    border: 2px solid black;
+    background-color: #313131;
+}
+
+.box:focus {
+    outline: none;
+}

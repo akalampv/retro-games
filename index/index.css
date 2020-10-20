@@ -1,0 +1,28 @@
+main {
+    display: grid;
+    grid-template-areas:
+        "header header header"
+        "simon simon simon";
+    justify-items: center;
+}
+
+main h2 {
+    font-size: 1.2rem;
+    padding: 4rem;
+    grid-area: header;
+}
+
+.simon {
+    margin: 2rem;
+    grid-area: simon;
+}
+
+.simon img {
+    max-width: 30%;
+    border: 5px solid var(--nav-color);
+    border-radius: 10%;
+}
+
+.simon img:hover {
+    opacity: 50%;
+}
